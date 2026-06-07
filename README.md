@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏗️ SnagTracker - Construction Defect Management System (MVP)
 
-## Getting Started
+A web application designed for efficient reporting, delegating, and tracking of construction site defects (snags). The project demonstrates a full task lifecycle (CRUD) and the implementation of Role-Based Access Control (RBAC) tailored for the construction industry.
 
-First, run the development server:
+## ✨ Core Business Features
 
-```bash
+* **Role-Based Access Control (RBAC):**
+  * **General Contractor (Generalny Wykonawca):** Full visibility of all issues across the site, the ability to report new snags, and the authority to perform final verification and closure (deletion) of resolved tasks.
+  * **Worker / Subcontractor (Pracownik):** Automatic data filtering to display only assigned tasks. Workers can update the progress status of their tasks in real-time.
+* **File Management (Object Storage):** Asynchronous upload of defect photos directly to the cloud, automatically generating and storing public URLs in the database.
+* **Dynamic Workflows:** Smooth task progression through operational stages: `DO ZROBIENIA` (To Do) ➡️ `W TOKU` (In Progress) ➡️ `ROZWIĄZANE` (Resolved) ➡️ `ZATWIERDZONE` (Approved & Deleted).
+* **Reliability & Fail-safes:** Implemented fallback mechanisms (local backup data) to ensure UI continuity and a seamless demonstration even in the event of database connection drops.
+
+## 🛠️ Tech Stack
+
+* **Frontend:** React, Next.js (App Router)
+* **Backend / Database:** Supabase (PostgreSQL)
+* **File Storage:** Supabase Storage (Public Buckets)
+
+## 🚀 Local Setup
+
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/YOUR_GITHUB_USERNAME/snag-tracker.git](https://github.com/Favkest11/snag-tracker.git)
+2.Install dependencies:
+npm install
+3.Configure environment variables. Create a .env.local file in the root directory and add your Supabase keys:
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+4.Run the development server:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
